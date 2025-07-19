@@ -1,0 +1,86 @@
+
+*******************************************************************************
+*******************************************************************************
+
+* DOCKER BUILD DEVELOPMENT :
+
+1. Set the server on vite.config for hot-reloading:
+
+server: {
+    host: true,       // Required for Docker
+    port: 3000,       // Match Docker port
+    strictPort: true,
+    watch: {
+    usePolling: true  // Required for hot-reload
+    }
+}
+
+2. Build and start the container:
+
+docker-compose up --build
+
+(For detached mode (running in background))
+docker-compose up -d --build
+
+3. Verify the Running Container:
+
+docker ps
+
+4. View logs:
+
+docker-compose logs -f
+
+5. Access Your Application in browser via Localhost (Network IP is the container address - don't use it):
+
+http://localhost:3000
+
+*******************************************************************************
+*******************************************************************************
+
+* DOCKER BUILD PRODUCTION :
+
+1. Build the Production Image:
+
+docker build -f Dockerfile.prod -t my-react-shadcn:prod .
+
+2. Run the Production Container:
+
+docker run -d -p 8080:80 --name react-prod-container my-react-shadcn:prod
+
+3. Verify the Running Container:
+
+docker ps
+
+4. Access Your Application:
+
+Open in browser: http://localhost:8080
+
+5. Stop the app container by ID:
+
+docker stop b91c534c7e7d088331e363facf5a60ba615cc2cfa980cd7a800393802829aa18
+
+*******************************************************************************
+*******************************************************************************
+
+*  Essential Development Commands :
+
+# Start containers
+docker-compose up
+
+# Stop containers
+docker-compose down
+
+# Rebuild containers (after Dockerfile changes)
+docker-compose up --build
+
+# Enter running container
+docker exec -it <container_name> sh
+
+# Install new dependency
+docker-compose exec frontend npm install <package>
+
+# Run tests inside container
+docker-compose exec frontend npm run test
+
+# Prune system (if facing issues)
+docker system prune -a
