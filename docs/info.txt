@@ -1,5 +1,17 @@
 
 npm create vite@latest react-shadcn -- --template react-ts
 
+npm install tailwindcss @tailwindcss/vite
+
+npm install class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
+
 *******************************************************************************
 *******************************************************************************
+
+tailwindcss:
+
+https://medium.com/@npguapo/installation-of-tailwind-vite-react-javascript-or-typescript-ec1abdfa56b2
+
+shadcn:
+
+https://ui.shadcn.com/docs/installation/manual
